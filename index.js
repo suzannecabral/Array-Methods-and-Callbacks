@@ -1,7 +1,7 @@
 import { fifaData } from './fifa.js';
-console.log(fifaData);
+// console.log(fifaData);
 
-console.log('its working');
+// console.log('its working');
 // ⚽️ M  V P ⚽️ //
 
 /* Task 1: Investigate the data above. Practice accessing data by console.log-ing the following pieces of data 
@@ -12,12 +12,55 @@ console.log('its working');
 (d) Away Team goals for 2014 world cup final
 (e) Winner of 2014 world cup final */
 
+console.log(`------- Task 1: Console Log -------`);
+
+
+//------------------------------------------
+// //all of these work to access data
+
+console.log(fifaData);
+console.log(fifaData[2]);
+console.log(fifaData[2].Year);
+console.log(fifaData[2].Stage);
+
+
+//------------------------------------------
+
+console.log("--- getMatchData ---" );
+
+
+    function getMatchData(dataset, index, key){
+        
+        console.log(dataset[index]);
+        // this works       param: (dataset, index)
+        // log an object by index, from argument
+
+        console.log(dataset[index][key]); 
+        //this works        param: (dataset, index, key)
+        // log key value using bracket notation, from argument
+        // can take a string with spaces as key arg
+
+        //next... I need something that loops so it can check each object for a condition. I'll need to access the object, then check the key.
+        // I keep forgetting quotes for strings.
+
+
+
+
+    }
+
+getMatchData(fifaData,55,"Home Team Name");
+
+
 
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
 
-function getFinals(/* code here */) {
+// console.log(`------- Task 2: getFinals -------`);
 
-    /* code here */
+function getFinals(data) {
+
+    let finalsData = [];
+
+
 
 };
 
