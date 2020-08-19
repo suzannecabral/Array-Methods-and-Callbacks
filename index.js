@@ -24,31 +24,78 @@ console.log(fifaData[2].Year);
 console.log(fifaData[2].Stage);
 
 
+// console.log(dataset[index]);
+// // this works       param: (dataset, index)
+// // log an object by index, from argument
+
+// console.log(dataset[index][key]); 
+// //this works        param: (dataset, index, key)
+// // log key value using bracket notation, from argument
+// // can take a string with spaces as key arg
+
+// //next... I need something that loops so it can check each object for a condition. I'll need to access the object, then check the key.
+// // I keep forgetting quotes for strings.
+
+
+        // //this works to filter down to finals games
+        // const finalMatch = dataset.filter(function(game){
+        //     return(game["Stage"] === "Final" && game["Year"] === 2014);
+
+            
+        // });
+
 //------------------------------------------
 
-console.log("--- getMatchData ---" );
+console.log("--------- getMatchData ---------" );
 
 
-    function getMatchData(dataset, index, key){
+    function getMatchData(dataset){
+
+        let matchData = {};
+        let homeTeam = {name:"",score:0};
+        let awayTeam = {name:"",score:0};
         
-        console.log(dataset[index]);
-        // this works       param: (dataset, index)
-        // log an object by index, from argument
+        //this works to filter down to finals games
+        const finalMatch = dataset.filter(function(game){
+            return(game["Stage"] === "Final" && game["Year"] === 2014);
 
-        console.log(dataset[index][key]); 
-        //this works        param: (dataset, index, key)
-        // log key value using bracket notation, from argument
-        // can take a string with spaces as key arg
+            
+        });
 
-        //next... I need something that loops so it can check each object for a condition. I'll need to access the object, then check the key.
-        // I keep forgetting quotes for strings.
+        matchData = finalMatch;
+        homeTeam.name = matchData[0]["Home Team Name"];
+        homeTeam.score = matchData[0]["Home Team Goals"];
+
+        awayTeam.name = matchData[0]["Away Team Name"];
+        awayTeam.score = matchData[0]["Away Team Goals"]
 
 
 
+        console.log(matchData);
+
+        console.log(`In ${matchData[0].Year}, the score was ${homeTeam.name}: ${homeTeam.score} (home) to ${awayTeam.name}: ${awayTeam.score} (away) `)
+
+        if(homeTeam.score > awayTeam.score){
+            console.log(`The winner was ${homeTeam.name}`);
+        }else if (awayTeam.score > homeTeam.score){
+            console.log(`The winner was ${awayTeam.Name}`);
+        }else{
+            console.log("It's a tie?");
+        };
+        
+
+        
+
+
+
+        //I can get the final game data as an object
+        //How do I access the values inside the object?
+
+//function getFinals()
 
     }
 
-getMatchData(fifaData,55,"Home Team Name");
+getMatchData(fifaData);
 
 
 
