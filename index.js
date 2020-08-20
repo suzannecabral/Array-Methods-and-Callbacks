@@ -101,17 +101,29 @@ getMatchData(fifaData);
 
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
 
-// console.log(`------- Task 2: getFinals -------`);
+console.log("--------- task2 getFinals ---------" );
 
 function getFinals(data) {
 
     let finalsData = [];
 
+    const finalMatches = data.filter(function(games){
+        return(games["Stage"] === "Final");
+    });
+
+    finalsData = finalMatches;
+    console.log(finalsData);
+
 
 
 };
 
+getFinals(fifaData);
+
 /* Task 3: Implement a higher-order function called `getYears` that accepts the callback function `getFinals`, and returns an array called `years` containing all of the years in the dataset */
+
+console.log("--------- task3 getYears ---------" );
+
 
 function getYears(/* code here */) {
 
