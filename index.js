@@ -125,13 +125,16 @@ getFinals(fifaData);
 console.log("--------- task3 getYears ---------" );
 
 
-function getYears(/* code here */) {
+function getYears(forEach) {
 
-    /* code here */
+    
+    fifaData.forEach(getFinals);
+
+
 
 };
 
-getYears();
+getYears(getFinals);
 
 /* Task 4: Implement a higher-order function called `getWinners`, that accepts the callback function `getFinals()` and determine the winner (home or away) of each `finals` game. Return the name of all winning countries in an array called `winners` */ 
 
