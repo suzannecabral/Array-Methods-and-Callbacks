@@ -63,11 +63,11 @@ function getYears(getFinals) {
         return items.Year;
     });
 
-    console.log(years);
+    return years;
 
 };
 
-getYears(getFinals(fifaData));
+console.log(getYears(getFinals(fifaData)));
 
 
 
@@ -88,23 +88,38 @@ console.log("----------- Task 4: getWinners -------------");
 
 
 function getWinners(getFinals){
-
     //accepts getFinals array of data
 
-    //for each one, take the home and away score, and compare them
+    //add a new key value for all entries for winnerName:"", and winnerFrom:"",
+    const updatedFinals = getFinals.map((items)=>{
+        items["Winner Team"] = "";
+        items["Winner From"] = "";
+        return items
+    });
+    // return updatedFinals;
+    // [x] updatedFinals works 
 
 
-        // if home wins, push new obj teamName:name, teamFrom:home
-        // if away wins, push new obj teamName:name, teamFrom:away
 
 
-    // return an array of objects {teamName, teamFrom}
+    const homeWinners = updatedFinals.filter((items)=>{
+        return items["Home Team Goals"] > items["Away Team Goals"];
+    });
+    
+    return homeWinners;
+
+
+    //filter home wins to var
+    // filter away wins to var
+
+    //map home wins - winner = home, teamname
+    //map away winds - winner = away, teamname
 
 
 
 };
 
-// getWinners();
+console.log(getWinners(getFinals(fifaData)));
 
 /* Task 5: Implement a higher-order function called `getWinnersByYear` that accepts the following parameters and returns a set of strings "In {year}, {country} won the world cup!" 
 
