@@ -150,13 +150,22 @@ getWinnersByYear(getWinners(getFinals(fifaData)), getYears(getFinals(fifaData)))
 console.log("----------- Task 6: getAverageGoals -------------");
 
 
-function getAverageGoals(/* code here */) {
+function getAverageGoals(data) {
 
-    /* code here */
+    const totalHome = data.reduce((total,items)=>{
+        return total + items["Home Team Goals"]
+    },0);
+    
+    const totalAway = data.reduce((total,items)=>{
+        return total + items["Away Team Goals"]
+    },0);
 
+    let avgGoals = [totalHome/data.length, totalAway/data.length]
+    return avgGoals;
+    
 };
 
-getAverageGoals();
+console.log(getAverageGoals(fifaData));
 
 /// STRETCH 🥅 //
 
