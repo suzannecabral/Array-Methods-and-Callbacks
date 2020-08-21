@@ -90,36 +90,38 @@ console.log("----------- Task 4: getWinners -------------");
 function getWinners(getFinals){
     //accepts getFinals array of data
 
-    //add a new key value for all entries for winnerName:"", and winnerFrom:"",
-    const updatedFinals = getFinals.map((items)=>{
-        items["Winner Team"] = "";
-        items["Winner From"] = "";
-        return items
+    // console.log(getFinals);
+    // // [x] Imported correctly
+
+    // //add a new key value for all entries for winnerName:"", and winnerFrom:"",
+    // const updatedFinals = getFinals.map((items)=>{
+    //     items["Winner Team"] = "";
+    //     items["Winner From"] = "";
+    //     return items
+    // });
+    // // return updatedFinals;
+    // // [x] updatedFinals works 
+
+    let winners = [];
+
+    getFinals.forEach((items) => {
+
+        if(items["Home Team Goals"] > items["Away Team Goals"]){
+            items["Winner From"] = "Home";
+            winners.push(items["Home Team Name"]);
+        }else{
+            items["Winner From"] = "Away";
+            winners.push(items["Away Team Name"]);
+        }
     });
-    // return updatedFinals;
-    // [x] updatedFinals works 
-
-
-
-
-    const homeWinners = updatedFinals.filter((items)=>{
-        return items["Home Team Goals"] > items["Away Team Goals"];
-    });
-    
-    return homeWinners;
-
-
-    //filter home wins to var
-    // filter away wins to var
-
-    //map home wins - winner = home, teamname
-    //map away winds - winner = away, teamname
-
-
+    return winners;
 
 };
 
 console.log(getWinners(getFinals(fifaData)));
+
+
+
 
 /* Task 5: Implement a higher-order function called `getWinnersByYear` that accepts the following parameters and returns a set of strings "In {year}, {country} won the world cup!" 
 
@@ -127,6 +129,9 @@ Parameters:
  * callback function getWinners
  * callback function getYears
  */
+
+console.log("----------- Task 5: getWinnersByYear -------------");
+
 
 function getWinnersByYear(/* code here */) {
 
