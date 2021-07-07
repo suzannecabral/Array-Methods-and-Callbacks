@@ -1,7 +1,7 @@
 import { fifaData } from './fifa.js';
-console.log(fifaData);
+// console.log(fifaData);
 
-console.log('its working');
+// console.log('its working');
 // ⚽️ M  V P ⚽️ //
 
 /* Task 1: Investigate the data above. Practice accessing data by console.log-ing the following pieces of data 
@@ -12,24 +12,129 @@ console.log('its working');
 (d) Away Team goals for 2014 world cup final
 (e) Winner of 2014 world cup final */
 
+console.log(`------- Task 1: Console Log -------`);
+
+
+//------------------------------------------
+// //all of these work to access data
+
+console.log(fifaData);
+console.log(fifaData[2]);
+console.log(fifaData[2].Year);
+console.log(fifaData[2].Stage);
+
+
+// console.log(dataset[index]);
+// // this works       param: (dataset, index)
+// // log an object by index, from argument
+
+// console.log(dataset[index][key]); 
+// //this works        param: (dataset, index, key)
+// // log key value using bracket notation, from argument
+// // can take a string with spaces as key arg
+
+// //next... I need something that loops so it can check each object for a condition. I'll need to access the object, then check the key.
+// // I keep forgetting quotes for strings.
+
+
+        // //this works to filter down to finals games
+        // const finalMatch = dataset.filter(function(game){
+        //     return(game["Stage"] === "Final" && game["Year"] === 2014);
+
+            
+        // });
+
+//------------------------------------------
+
+console.log("--------- getMatchData ---------" );
+
+
+    function getMatchData(dataset){
+
+        let matchData = {};
+        let homeTeam = {name:"",score:0};
+        let awayTeam = {name:"",score:0};
+        
+        //this works to filter down to finals games
+        const finalMatch = dataset.filter(function(game){
+            return(game["Stage"] === "Final" && game["Year"] === 2014);
+
+            
+        });
+
+        matchData = finalMatch;
+        homeTeam.name = matchData[0]["Home Team Name"];
+        homeTeam.score = matchData[0]["Home Team Goals"];
+
+        awayTeam.name = matchData[0]["Away Team Name"];
+        awayTeam.score = matchData[0]["Away Team Goals"]
+
+
+
+        console.log(matchData);
+
+        console.log(`In ${matchData[0].Year}, the score was ${homeTeam.name}: ${homeTeam.score} (home) to ${awayTeam.name}: ${awayTeam.score} (away) `)
+
+        if(homeTeam.score > awayTeam.score){
+            console.log(`The winner was ${homeTeam.name}`);
+        }else if (awayTeam.score > homeTeam.score){
+            console.log(`The winner was ${awayTeam.Name}`);
+        }else{
+            console.log("It's a tie?");
+        };
+        
+
+        
+
+
+
+        //I can get the final game data as an object
+        //How do I access the values inside the object?
+
+//function getFinals()
+
+    }
+
+getMatchData(fifaData);
+
+
 
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
 
-function getFinals(/* code here */) {
+console.log("--------- task2 getFinals ---------" );
 
-    /* code here */
+function getFinals(data) {
+
+    let finalsData = [];
+
+    const finalMatches = data.filter(function(games){
+        return(games["Stage"] === "Final");
+    });
+
+    finalsData = finalMatches;
+    console.log(finalsData);
+
+
 
 };
+
+getFinals(fifaData);
 
 /* Task 3: Implement a higher-order function called `getYears` that accepts the callback function `getFinals`, and returns an array called `years` containing all of the years in the dataset */
 
-function getYears(/* code here */) {
+console.log("--------- task3 getYears ---------" );
 
-    /* code here */
+
+function getYears(forEach) {
+
+    
+    fifaData.forEach(getFinals);
+
+
 
 };
 
-getYears();
+getYears(getFinals);
 
 /* Task 4: Implement a higher-order function called `getWinners`, that accepts the callback function `getFinals()` and determine the winner (home or away) of each `finals` game. Return the name of all winning countries in an array called `winners` */ 
 
@@ -102,3 +207,4 @@ function badDefense(/* code here */) {
 badDefense();
 
 /* If you still have time, use the space below to work on any stretch goals of your chosing as listed in the README file. */
+ 
